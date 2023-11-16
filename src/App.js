@@ -1,27 +1,31 @@
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Nav, Navbar } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './componentes/Home';
 import Sobre from './componentes/Sobre';
 import Alunos from './componentes/Alunos';
-import {BrowserRouter, Routes, Link, Route} from 'react-router-dom';
-import {Nav} from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>CRUD App with React</h1>
-      <BrowserRouter>
-      <Nav variant="tabs"><Nav.Link as={Link} to="/">Página Inicial</Nav.Link>
-      <Nav.Link as={Link} to="/alunos">Alunos</Nav.Link>
-      <Nav.Link as={Link} to="/sobre">Sobre</Nav.Link></Nav>
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sobre" element={<Sobre />} />
-        <Route path="/alunos" element={<Alunos />} />
+
+      <Router>
+        <Navbar bg="dark" variant="dark">
+          <Navbar.Brand as={Link} to="/">CRUD App with React</Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Link as={Link} to="/">Página Inicial</Nav.Link>
+            <Nav.Link as={Link} to="/alunos">Alunos</Nav.Link>
+            <Nav.Link as={Link} to="/sobre">Sobre</Nav.Link>
+          </Nav>
+        </Navbar>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/alunos" element={<Alunos />} />
         </Routes>
-      </BrowserRouter>
-      
+      </Router>
     </div>
   );
 }
